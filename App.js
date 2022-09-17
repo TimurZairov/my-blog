@@ -2,11 +2,9 @@ import {useEffect, useCallback} from "react";
 import {useFonts} from "expo-font";
 import * as SplashScreen from 'expo-splash-screen'
 import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //components
-import {MainScreen} from "./src/screens/MainScreen";
-import {PostScreen} from "./src/screens/PostScreen";
+import {AppNavigation} from "./src/navigation/AppNavigation";
 
 
 export default function App() {
@@ -33,15 +31,9 @@ export default function App() {
         return null;
     }
 
-    const Stack = createNativeStackNavigator()
-
     return (
         <NavigationContainer onReady={onLayoutRootView} >
-            <Stack.Navigator>
-                <Stack.Screen name="Главная" component={MainScreen} options={{title: "Главная"}}/>
-                <Stack.Screen name="Посты" component={PostScreen}/>
-            </Stack.Navigator>
-
+            <AppNavigation />
         </NavigationContainer>
 
     );
