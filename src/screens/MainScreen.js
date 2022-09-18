@@ -1,8 +1,10 @@
 import React from "react";
-import {Button, Image, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Button, Image, Platform, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
 import {THEME} from "../theme";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {LinearGradient} from 'expo-linear-gradient';
+import {FavoriteSlider} from "../components/FavoriteSlider";
+import {Tabs} from "../components/Tabs";
 
 
 export const MainScreen = ({navigation}) => {
@@ -27,7 +29,6 @@ export const MainScreen = ({navigation}) => {
                 }}
             />
             <View style={styles.nav}>
-
                 <TouchableOpacity activeOpacity={0.5}>
                     <Ionicons name={'menu'} size={32} color={THEME.MAIN_FONT_COLOR}/>
                 </TouchableOpacity>
@@ -38,6 +39,8 @@ export const MainScreen = ({navigation}) => {
 
                 {/*<Button title="Go to Posts"  onPress={() => navigation.push('Посты')} />*/}
             </View>
+            <FavoriteSlider />
+            <Tabs />
         </View>
 
     )
