@@ -1,14 +1,23 @@
-import React from "react";
-import {Image, Platform, ScrollView, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
+import React, {useEffect, useState} from "react";
+import {
+    FlatList,
+    Image,
+    Platform,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    TouchableOpacity,
+    View
+} from "react-native";
 import {THEME} from "../theme";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {LinearGradient} from 'expo-linear-gradient';
 import {FavoriteSlider} from "../components/FavoriteSlider";
 import {Tabs} from "../components/Tabs";
+import {Posts} from "../components/Posts";
 
 
 export const MainScreen = ({navigation}) => {
-
     // const goToPosts = () => {
     //     navigation.navigate('Посты')
     // }
@@ -38,9 +47,11 @@ export const MainScreen = ({navigation}) => {
                 </View>
             </View>
             <ScrollView>
-                <FavoriteSlider />
-                <Tabs />
+                <FavoriteSlider/>
+                <Tabs/>
+                <Posts/>
             </ScrollView>
+
         </View>
 
     )

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     blogText: {
-        fontFamily: 'rubik-medium',
+        fontFamily: 'rubik-light',
         fontSize: 20,
         color: THEME.POST_FONT_COLOR,
         opacity: 0.7

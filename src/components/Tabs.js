@@ -1,44 +1,17 @@
 import React from "react";
-import {Text, View, StyleSheet, ScrollView} from "react-native";
+import {Text, View, StyleSheet, ScrollView, TouchableOpacity} from "react-native";
 import {THEME} from "../theme";
 
 
-// const Item = ({title}) => (
-//     <View style={styles.tabsWrapper}>
-//         <Text style={styles.tabItem}>{title}</Text>
-//     </View>
-// )
-
 export const Tabs = () => {
-    // const renderItem = ({item}) => (<Item title={item.title}/>)
-
-    const tabs = [
-        {
-            id: 1,
-            title: 'Последнее',
-        },
-        {
-            id: 2,
-            title: 'Популярное',
-        },
-        {
-            id: 3,
-            title: 'Мои Избранные',
-        },
-        {
-            id: 4,
-            title: 'Мои мысли',
-        },
-    ]
-
-    const tab = tabs.map(item => {
-        return <Text key={item.id} style={styles.tabItem}>{item.title}</Text>
-    })
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.tabsWrapper} horizontal={true} showsHorizontalScrollIndicator={false}>
-                {tab}
+            <ScrollView contentContainerStyle={styles.tabsWrapper} horizontal={true}
+                        showsHorizontalScrollIndicator={false}>
+                <TouchableOpacity>
+                    <Text style={[styles.tabItem, styles.active]}>Последнее добавленное</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     )
@@ -51,14 +24,17 @@ const styles = StyleSheet.create({
         height: 50,
     },
     tabsWrapper: {
-        height: 50,
+        height: 30,
         alignItems: 'center'
     },
     tabItem: {
-        fontSize: 20,
+        fontSize: 18,
         color: THEME.POST_FONT_COLOR,
-        fontFamily: 'rubik-medium',
+        fontFamily: 'rubik-light',
         marginRight: 30,
-        opacity: .5
+        opacity: 0.9,
+    },
+    active: {
+        color: THEME.MAIN_FONT_COLOR,
     }
 })
