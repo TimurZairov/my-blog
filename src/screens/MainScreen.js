@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Image, Platform, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, Platform, ScrollView, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
 import {THEME} from "../theme";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -36,11 +36,11 @@ export const MainScreen = ({navigation}) => {
                     <Ionicons name="search" size={30} color={THEME.MAIN_FONT_COLOR}/>
                     <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
                 </View>
-
-                {/*<Button title="Go to Posts"  onPress={() => navigation.push('Посты')} />*/}
             </View>
-            <FavoriteSlider />
-            <Tabs />
+            <ScrollView>
+                <FavoriteSlider />
+                <Tabs />
+            </ScrollView>
         </View>
 
     )
@@ -65,16 +65,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginBottom: 5
     },
     wrap: {
-        width: '35%',
+        width: '30%',
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: "center",
     },
     imgAvatar: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
         borderRadius: 100
     },
 });

@@ -47,11 +47,10 @@ export const Tabs = () => {
 const styles = StyleSheet.create({
     container: {
         paddingLeft: 22,
-        marginTop: 40,
+        marginTop: 5,
         height: 50,
     },
     tabsWrapper: {
-        flexDirection: 'row',
         height: 50,
         alignItems: 'center'
     },
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: THEME.POST_FONT_COLOR,
         fontFamily: 'rubik-medium',
-        marginRight: 50
+        marginRight: 30,
+        opacity: .5
     }
 })
