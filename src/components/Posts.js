@@ -1,30 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {View, StyleSheet, Image, Text, TouchableOpacity, FlatList} from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {THEME} from "../theme";
-import {DATA} from '../../Data'
 
-
-
-
-export const Posts = () => {
-    const [post, setPost] = useState([])
+export const Posts = ({item}) => {
     const date = new Date().toLocaleDateString()
-
-    useEffect(() => {
-        setPost(DATA)
-    })
-
 
 
     return (
 
         <View style={styles.container}>
-
-            <FlatList
-                data={post}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
+            {item ? (
                 <TouchableOpacity style={styles.card} activeOpacity={.8}>
                     <View>
                         <Image source={{
@@ -45,8 +31,7 @@ export const Posts = () => {
                         </View>
                     </View>
                 </TouchableOpacity>
-            )} />
-
+            ): <Text>Тут пока пусто</Text>}
         </View>
     )
 }

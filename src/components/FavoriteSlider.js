@@ -1,11 +1,12 @@
 import React from "react";
 import {Text, View, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
 import {THEME} from "../theme";
+import {Tabs} from "./Tabs";
 
 export const FavoriteSlider =() => {
     return (
         <View style={styles.container}>
-            <Text style={styles.blogText} >Мой Блог</Text>
+            <Text style={styles.blogText} >Блог Сусаны</Text>
             <Text style={styles.favoriteText}>Избранное</Text>
             <ScrollView style={styles.horizontalScroll} contentContainerStyle={styles.tabsWrapper} horizontal={true} showsHorizontalScrollIndicator={false}>
                 <TouchableOpacity style={styles.img} activeOpacity={0.6}>
@@ -38,6 +39,7 @@ export const FavoriteSlider =() => {
                     }} />
                 </TouchableOpacity>
             </ScrollView>
+            <Tabs />
         </View>
     )
 }

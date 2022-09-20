@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {
     FlatList,
     Image,
     Platform,
-    ScrollView,
     StatusBar,
     StyleSheet,
     TouchableOpacity,
@@ -12,9 +11,11 @@ import {
 import {THEME} from "../theme";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {LinearGradient} from 'expo-linear-gradient';
+// components
 import {FavoriteSlider} from "../components/FavoriteSlider";
-import {Tabs} from "../components/Tabs";
 import {Posts} from "../components/Posts";
+//Data
+import {DATA} from "../../Data";
 
 
 export const MainScreen = ({navigation}) => {
@@ -46,11 +47,14 @@ export const MainScreen = ({navigation}) => {
                     <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
                 </View>
             </View>
-            <ScrollView>
-                <FavoriteSlider/>
-                <Tabs/>
-                <Posts/>
-            </ScrollView>
+            <FlatList
+                data={DATA}
+                keyExtractor={item => item.id}
+                ListHeaderComponent={<FavoriteSlider/>}
+                renderItem={({item}) =><Posts item={item}/>}
+            />
+
+
 
         </View>
 
