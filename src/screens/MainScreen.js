@@ -16,6 +16,7 @@ import {FavoriteSlider} from "../components/FavoriteSlider";
 import {Posts} from "../components/Posts";
 //Data
 import {DATA} from "../../Data";
+import {Nav} from "../components/Nav";
 
 
 export const MainScreen = ({navigation}) => {
@@ -44,15 +45,7 @@ export const MainScreen = ({navigation}) => {
                     y: 0.0
                 }}
             />
-            <View style={styles.nav}>
-                <TouchableOpacity activeOpacity={0.5}>
-                    <Ionicons name={'menu'} size={32} color={THEME.MAIN_FONT_COLOR}/>
-                </TouchableOpacity>
-                <View style={styles.wrap}>
-                    <Ionicons name="search" size={30} color={THEME.MAIN_FONT_COLOR}/>
-                    <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
-                </View>
-            </View>
+            <Nav />
             <FlatList
                 data={DATA}
                 keyExtractor={item => item.id}
@@ -76,24 +69,5 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0
-    },
-    nav: {
-        height: 60,
-        paddingHorizontal: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 5
-    },
-    wrap: {
-        width: '30%',
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    imgAvatar: {
-        width: 50,
-        height: 50,
-        borderRadius: 100
-    },
+    }
 });
