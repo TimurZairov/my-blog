@@ -3,18 +3,17 @@ import {View, StyleSheet, Image, Text, TouchableOpacity, FlatList} from "react-n
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {THEME} from "../theme";
 
-export const Posts = ({item}) => {
+export const Posts = ({post, goToPosts}) => {
     const date = new Date().toLocaleDateString()
-
 
     return (
 
         <View style={styles.container}>
-            {item ? (
-                <TouchableOpacity style={styles.card} activeOpacity={.8}>
+            {post ? (
+                <TouchableOpacity style={styles.card} activeOpacity={.8} onPress={() => goToPosts(post)}>
                     <View>
                         <Image source={{
-                            uri: item.url
+                            uri: post.url
                         }} style={{
                             width: 90,
                             height: 80,
@@ -23,7 +22,7 @@ export const Posts = ({item}) => {
                     </View>
                     <View style={styles.titleContainer}>
                         <Text style={styles.postTitle}>
-                            {item.title && item.title.length > 50 ? item.title.slice(0, 49) : item.title}
+                            {post.title && post.title.length > 50 ? post.title.slice(0, 49) : post.title}
                         </Text>
                         <View style={styles.postTime}>
                             <AntDesign name='clockcircleo' size={15} color={THEME.POST_FONT_COLOR}/>

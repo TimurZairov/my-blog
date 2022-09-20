@@ -16,7 +16,13 @@ export const AppNavigation = () => {
                     }}
 
                 />
-                <Stack.Screen name="Посты" component={PostScreen}/>
+                <Stack.Screen
+                    name="Посты"
+                    component={PostScreen}
+                    options={{
+                        headerShown: false
+                    }}
+                />
             </Stack.Navigator>
     )
 }

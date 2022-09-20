@@ -1,13 +1,21 @@
 import React from "react";
 import {Button, Text, View} from "react-native";
 
-export const PostScreen =({navigation}) => {
+export const PostScreen = ({navigation, route}) => {
+    const {
+        postId,
+        body,
+        title,
+        favorite,
+        url
+    } = route.params
+
     return (
         <View>
             <Text>
-                PostScreen
+                {body}
             </Text>
-            <Button title='Go back' onPress={() => navigation.goBack('Главная')} />
+            <Button title='Go back' onPress={() => navigation.goBack('Главная')}/>
         </View>
     )
 }

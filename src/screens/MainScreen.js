@@ -19,9 +19,15 @@ import {DATA} from "../../Data";
 
 
 export const MainScreen = ({navigation}) => {
-    // const goToPosts = () => {
-    //     navigation.navigate('Посты')
-    // }
+    const goToPosts = (post) => {
+        navigation.navigate('Посты',{
+            postId: post.id,
+            body: post.body,
+            title: post.title,
+            favorite: post.favorite,
+            url: post.url
+        })
+    }
 
     return (
         <View style={styles.AndroidSaveArea}>
@@ -51,11 +57,8 @@ export const MainScreen = ({navigation}) => {
                 data={DATA}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={<FavoriteSlider/>}
-                renderItem={({item}) =><Posts item={item}/>}
+                renderItem={({item}) =><Posts post={item} goToPosts={goToPosts}/>}
             />
-
-
-
         </View>
 
     )
