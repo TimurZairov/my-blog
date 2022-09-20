@@ -1,12 +1,11 @@
-import {useEffect, useCallback} from "react";
+import React, {useEffect, useCallback} from "react";
 import {useFonts} from "expo-font";
 import * as SplashScreen from 'expo-splash-screen'
 import {NavigationContainer} from "@react-navigation/native";
 
 //components
 import {AppNavigation} from "./src/navigation/AppNavigation";
-import {Nav} from "./src/components/Nav";
-import {Platform, StatusBar, StyleSheet} from "react-native";
+import {BottomTabNavigation} from "./src/navigation/BottomTabNavigation";
 
 
 export default function App() {
@@ -34,8 +33,12 @@ export default function App() {
     }
 
     return (
-        <NavigationContainer onReady={onLayoutRootView}>
-            <AppNavigation/>
-        </NavigationContainer>
+        <>
+            <NavigationContainer onReady={onLayoutRootView}>
+                <AppNavigation />
+            </NavigationContainer>
+        </>
+
+
     );
 }
