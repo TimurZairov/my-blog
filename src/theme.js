@@ -8,5 +8,6 @@ export const THEME = {
     WHITE_FONT_COLOR: '#FAFCFC',
     POST_BG_COLOR: '#F6F8FA',
     DELETE_POST_BTN: '#F10602',
-    ADD_POST_BTN: '#1F5DE1'
+    ADD_POST_BTN: '#1F5DE1',
+    BACK_BTN_COLOR: '#e7e7e7',
 }

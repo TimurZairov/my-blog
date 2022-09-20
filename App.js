@@ -5,6 +5,8 @@ import {NavigationContainer} from "@react-navigation/native";
 
 //components
 import {AppNavigation} from "./src/navigation/AppNavigation";
+import {Nav} from "./src/components/Nav";
+import {Platform, StatusBar, StyleSheet} from "react-native";
 
 
 export default function App() {
@@ -32,9 +34,8 @@ export default function App() {
     }
 
     return (
-        <NavigationContainer onReady={onLayoutRootView} >
-            <AppNavigation />
+        <NavigationContainer onReady={onLayoutRootView}>
+            <AppNavigation/>
         </NavigationContainer>
-
     );
 }
