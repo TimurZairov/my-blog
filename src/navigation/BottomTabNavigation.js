@@ -1,6 +1,6 @@
 import React from "react";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Ionicons} from '@expo/vector-icons';
+import {Ionicons, MaterialIcons} from '@expo/vector-icons';
 
 import {BookMarkedScreen} from "../screens/BookMarkedScreen";
 import {AppNavigation} from "./AppNavigation";
@@ -10,10 +10,6 @@ const Tab = createBottomTabNavigator();
 
 export const BottomTabNavigation = () => {
 
-    const colorIcon = () => {
-
-    }
-
 
     return (
         <Tab.Navigator>
@@ -22,8 +18,8 @@ export const BottomTabNavigation = () => {
                 tabBarShowLabel: false,
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
-                tabBarIcon: () => (
-                    <Ionicons name="home" size={24}/>
+                tabBarIcon: ({focused}) => (
+                    <Ionicons name="home" size={24} color={focused ? '#1F5DE1' : '#8A8F93' }/>
                 )
             }}/>
             <Tab.Screen name='Избранное' component={BookMarkedScreen} options={{
@@ -31,6 +27,9 @@ export const BottomTabNavigation = () => {
                 tabBarShowLabel: false,
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
+                tabBarIcon: ({focused}) => (
+                    <MaterialIcons name="favorite" size={24} color={focused ? '#1F5DE1' : '#8A8F93' }/>
+                )
 
             }}/>
         </Tab.Navigator>
