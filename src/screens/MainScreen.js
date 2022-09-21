@@ -1,11 +1,9 @@
 import React from "react";
 import {
     FlatList,
-    Image,
     Platform,
     StatusBar,
     StyleSheet,
-    TouchableOpacity,
     View
 } from "react-native";
 import {THEME} from "../theme";

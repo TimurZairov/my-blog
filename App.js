@@ -4,7 +4,6 @@ import * as SplashScreen from 'expo-splash-screen'
 import {NavigationContainer} from "@react-navigation/native";
 
 //components
-import {AppNavigation} from "./src/navigation/AppNavigation";
 import {BottomTabNavigation} from "./src/navigation/BottomTabNavigation";
 
 
@@ -35,7 +34,7 @@ export default function App() {
     return (
         <>
             <NavigationContainer onReady={onLayoutRootView}>
-                <AppNavigation />
+                <BottomTabNavigation />
             </NavigationContainer>
         </>
 

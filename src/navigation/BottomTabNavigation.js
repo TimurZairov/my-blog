@@ -1,18 +1,38 @@
 import React from "react";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {MainScreen} from "../screens/MainScreen";
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Ionicons} from '@expo/vector-icons';
+
 import {BookMarkedScreen} from "../screens/BookMarkedScreen";
+import {AppNavigation} from "./AppNavigation";
 
 
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNavigation = () => {
-    return(
+
+    const colorIcon = () => {
+
+    }
+
+
+    return (
         <Tab.Navigator>
-            <Tab.Screen name='Главная' component={MainScreen}  options={{
-                headerShown: false
-            }} />
-            <Tab.Screen name='Избранное' component={BookMarkedScreen}/>
+            <Tab.Screen name='Главная' component={AppNavigation} options={{
+                tabBarActiveTintColor: '#1F5DE1',
+                tabBarShowLabel: false,
+                tabBarHideOnKeyboard: true,
+                headerShown: false,
+                tabBarIcon: () => (
+                    <Ionicons name="home" size={24}/>
+                )
+            }}/>
+            <Tab.Screen name='Избранное' component={BookMarkedScreen} options={{
+                tabBarActiveTintColor: '#1F5DE1',
+                tabBarShowLabel: false,
+                tabBarHideOnKeyboard: true,
+                headerShown: false,
+
+            }}/>
         </Tab.Navigator>
     )
 }

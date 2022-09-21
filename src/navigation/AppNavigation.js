@@ -3,11 +3,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {MainScreen} from "../screens/MainScreen";
 import {PostScreen} from "../screens/PostScreen";
 import {BookMarkedScreen} from "../screens/BookMarkedScreen";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import React from "react";
 
 const Stack = createNativeStackNavigator()
-const Tab = createBottomTabNavigator();
 
 export const AppNavigation = () => {
     return (
@@ -15,7 +13,7 @@ export const AppNavigation = () => {
             <Stack.Navigator>
                 <Stack.Group>
                     <Stack.Screen
-                        name="Главная"
+                        name="Номе"
                         component={MainScreen}
                         options={{
                             headerShown: false
@@ -27,6 +25,7 @@ export const AppNavigation = () => {
                         options={{
                             headerShown: false
                         }}
+
                     />
 
                     <Stack.Screen
