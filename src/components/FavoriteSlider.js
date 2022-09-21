@@ -2,42 +2,30 @@ import React from "react";
 import {Text, View, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
 import {THEME} from "../theme";
 import {Tabs} from "./Tabs";
+import {DATA} from "../../Data";
 
 export const FavoriteSlider =() => {
+
     return (
         <View style={styles.container}>
             <Text style={styles.blogText} >Блог Сусаны</Text>
             <Text style={styles.favoriteText}>Избранное</Text>
+
             <ScrollView style={styles.horizontalScroll} contentContainerStyle={styles.tabsWrapper} horizontal={true} showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity style={styles.img} activeOpacity={0.6}>
-                    <Image source={{
-                        uri: 'https://krot.info/uploads/posts/2021-12/1638850063_9-krot-info-p-krasiveishie-peizazhi-prirodi-krasivie-fot-10.jpg'
-                    }} style={{
-                        width: 200,
-                        height: 250,
-                        // resizeMode: 'contain'
-                    }} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.img} activeOpacity={0.6}>
-                    <Image source={{
-                        uri: 'https://image3.thematicnews.com/uploads/images/68/22/63/92020/04/02/6e40dda100.jpg'
-                    }} style={{
-                        width: 200,
-                        height: 250,
-                        // resizeMode: 'contain'
-                    }} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.img} activeOpacity={0.6}>
-                    <Image source={{
-                        uri: 'https://phonoteka.org/uploads/posts/2021-09/1631660145_49-phonoteka-org-p-kartinki-dlya-fona-priroda-krasivo-52.jpg'
-                    }} style={{
-                        width: 200,
-                        height: 250,
-                        // resizeMode: 'contain'
-                    }} />
-                </TouchableOpacity>
+                {DATA ? DATA.map((item, i) => {
+                    if(item.favorite){
+                        return (
+                            <View style={styles.img} activeOpacity={0.6} key={i}>
+                                <Image source={{
+                                    uri: item.url
+                                }} style={{
+                                    width: 200,
+                                    height: 250,
+                                }} />
+                            </View>
+                        )
+                    }
+                }) : []}
             </ScrollView>
             <Tabs />
         </View>

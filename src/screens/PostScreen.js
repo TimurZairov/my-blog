@@ -12,7 +12,7 @@ export const PostScreen = ({navigation, route}) => {
         url,
     } = route.params
     const goBackHandler = () => {
-        navigation.goBack('Главная')
+        navigation.navigate('Домой')
     }
     return (
         <View style={styles.AndroidSaveArea}>

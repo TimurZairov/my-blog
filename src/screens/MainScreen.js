@@ -7,7 +7,6 @@ import {
     View
 } from "react-native";
 import {THEME} from "../theme";
-import Ionicons from '@expo/vector-icons/Ionicons';
 import {LinearGradient} from 'expo-linear-gradient';
 // components
 import {FavoriteSlider} from "../components/FavoriteSlider";

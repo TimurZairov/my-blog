@@ -11,9 +11,8 @@ export const AppNavigation = () => {
     return (
         <>
             <Stack.Navigator>
-                <Stack.Group>
                     <Stack.Screen
-                        name="Номе"
+                        name="Домой"
                         component={MainScreen}
                         options={{
                             headerShown: false
@@ -25,17 +24,7 @@ export const AppNavigation = () => {
                         options={{
                             headerShown: false
                         }}
-
                     />
-
-                    <Stack.Screen
-                        name="Избранное"
-                        options={{
-                            headerShown: false
-                        }}
-                        getComponent={BookMarkedScreen}
-                    />
-                </Stack.Group>
             </Stack.Navigator>
         </>
 
