@@ -6,14 +6,14 @@ import {
     StyleSheet,
     View
 } from "react-native";
-import {THEME} from "../theme";
-import {LinearGradient} from 'expo-linear-gradient';
+
 // components
 import {FavoriteSlider} from "../components/FavoriteSlider";
 import {Posts} from "../components/Posts";
 //Data
 import {DATA} from "../../Data";
 import {Nav} from "../components/Nav";
+import {BgComponent} from "../components/BgComponent";
 
 
 export const MainScreen = ({navigation}) => {
@@ -29,19 +29,7 @@ export const MainScreen = ({navigation}) => {
 
     return (
         <View style={styles.AndroidSaveArea}>
-            <LinearGradient
-                // Background Linear Gradient
-                colors={[THEME.MAIN_BG, THEME.WHITE_BG]}
-                style={styles.background}
-                start={{
-                    x: 0.2499,
-                    y: 0
-                }}
-                end={{
-                    x: 0.25,
-                    y: 0.0
-                }}
-            />
+            <BgComponent />
             <Nav />
             <FlatList
                 data={DATA}
@@ -60,11 +48,4 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
         position: "relative"
     },
-    background: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
-    }
 });

@@ -2,6 +2,8 @@ import React from "react";
 import { Platform, Text, View, StyleSheet, StatusBar, Image, ScrollView} from "react-native";
 import {Nav} from "../components/Nav";
 import {THEME} from "../theme";
+import {BgComponent} from "../components/BgComponent";
+import {Fontisto} from '@expo/vector-icons';
 
 export const PostScreen = ({navigation, route}) => {
     const {
@@ -16,6 +18,7 @@ export const PostScreen = ({navigation, route}) => {
     }
     return (
         <View style={styles.AndroidSaveArea}>
+            <BgComponent />
             <Nav screenLocation={route.name} goBackHandler={goBackHandler} />
             <View style={styles.imageWrap}>
                 <Image source={{
@@ -24,6 +27,9 @@ export const PostScreen = ({navigation, route}) => {
                     width: '100%',
                     height: 370
                 }}/>
+                <View style={styles.favIcon}>
+                    <Fontisto name='favorite' size={32} color={favorite ? 'red' : 'white'}/>
+                </View>
                 <Text style={styles.bodyTitle}>{title}</Text>
             </View>
             <ScrollView style={styles.bodyWrapper}>
@@ -44,19 +50,26 @@ const styles = StyleSheet.create({
     imageWrap: {
         width: '100%',
         height: '50%',
-        position: "relative"
+        position: "relative",
+    },
+    favIcon: {
+        width: 32,
+        height: 32,
+        position: 'absolute',
+        right: 10,
+        top: 20
     },
     bodyTitle: {
         position: 'absolute',
         zIndex: 10,
-        bottom: 100,
+        bottom: 40,
         color: 'rgba(255,255,255,0.9)',
         fontSize: 25,
         marginLeft: 25,
     },
     bodyWrapper: {
         width: '100%',
-        height: '50%',
+        height: '45%',
         backgroundColor: THEME.WHITE_BG,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,

@@ -11,7 +11,7 @@ export const FavoriteSlider =() => {
             <Text style={styles.blogText} >Блог Сусаны</Text>
             <Text style={styles.favoriteText}>Избранное</Text>
 
-            <ScrollView style={styles.horizontalScroll} contentContainerStyle={styles.tabsWrapper} horizontal={true} showsHorizontalScrollIndicator={false}>
+            <ScrollView style={styles.horizontalScroll}  horizontal={true} showsHorizontalScrollIndicator={false}>
                 {DATA ? DATA.map((item, i) => {
                     if(item.favorite){
                         return (

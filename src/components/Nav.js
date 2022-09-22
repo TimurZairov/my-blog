@@ -12,15 +12,20 @@ export const Nav = ({screenLocation, goBackHandler}) => {
                         <Ionicons name="chevron-back" size={32} color={THEME.MAIN_FONT_COLOR}/>
                     </TouchableOpacity>
                 </View>
+
             ) : (
-                <TouchableOpacity activeOpacity={0.5}>
-                    <Ionicons name={'menu'} size={32} color={THEME.MAIN_FONT_COLOR}/>
-                </TouchableOpacity>
+                <>
+                    <TouchableOpacity activeOpacity={0.5}>
+                        <Ionicons name={'menu'} size={32} color={THEME.MAIN_FONT_COLOR}/>
+                    </TouchableOpacity>
+                    <View style={styles.wrap}>
+                        <Ionicons name="search" size={30} color={THEME.MAIN_FONT_COLOR}/>
+                        <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
+                    </View>
+                </>
+
             )}
-            <View style={styles.wrap}>
-                <Ionicons name="search" size={30} color={THEME.MAIN_FONT_COLOR}/>
-                <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
-            </View>
+
         </View>
     )
 }
