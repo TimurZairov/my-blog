@@ -1,14 +1,15 @@
 import React from "react";
-import {Platform, StatusBar, StyleSheet, Text, View} from "react-native";
+import {Button, Platform, StatusBar, StyleSheet, Text, View} from "react-native";
 import {Nav} from "../components/Nav";
 
-export const CreateScreen =() => {
+
+
+
+export const CreateScreen = ({ navigation, route }) => {
+
     return (
         <View style={styles.AndroidSaveArea}>
-            <Nav/>
-            <Text>
-                Create
-            </Text>
+            <Nav screenLocation={route.name}/>
         </View>
     )
 }

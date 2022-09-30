@@ -7,12 +7,14 @@ import {FavoriteCard} from "../components/FavoriteCard";
 
 
 export const BookMarkedScreen = () => {
-
+    const favoriteItem = DATA.filter(item => {
+        return item.favorite
+    })
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
             <Nav/>
-            <FlatList keyExtractor={item => item.id} data={DATA} renderItem={({item}) => <FavoriteCard data={item}/>} />
+            <FlatList keyExtractor={item => item.id} data={favoriteItem} renderItem={({item}) => <FavoriteCard data={item}/>} />
         </View>
     )
 }

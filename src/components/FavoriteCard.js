@@ -3,7 +3,6 @@ import {Image, Platform, StatusBar, StyleSheet, Text, View} from "react-native";
 import {Fontisto} from "@expo/vector-icons";
 
 export const FavoriteCard = ({data}) => {
-
     return (
         <View style={styles.wrapper}>
             <View style={styles.imgContainer}>

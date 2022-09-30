@@ -6,7 +6,7 @@ import {THEME} from "../theme";
 export const Nav = ({screenLocation, goBackHandler}) => {
     return (
         <View style={styles.nav}>
-            {screenLocation ? (
+            {screenLocation === 'Посты' ? (
                 <View style={styles.goBack}>
                     <TouchableOpacity activeOpacity={0.5} onPress={goBackHandler}>
                         <Ionicons name="chevron-back" size={32} color={THEME.MAIN_FONT_COLOR}/>
@@ -19,7 +19,9 @@ export const Nav = ({screenLocation, goBackHandler}) => {
                         <Ionicons name={'menu'} size={32} color={THEME.MAIN_FONT_COLOR}/>
                     </TouchableOpacity>
                     <View style={styles.wrap}>
-                        <Ionicons name="search" size={30} color={THEME.MAIN_FONT_COLOR}/>
+                        <TouchableOpacity>
+                            <Ionicons name="ios-camera" size={30} color={THEME.MAIN_FONT_COLOR}/>
+                        </TouchableOpacity>
                         <Image source={require('../../assets/images/avatar.jpg')} style={styles.imgAvatar}/>
                     </View>
                 </>
