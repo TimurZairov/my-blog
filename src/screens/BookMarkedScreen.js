@@ -14,7 +14,6 @@ export const BookMarkedScreen = () => {
 
     //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
     const toggleHandler = (id) => {
-        console.log(id)
         const favorite = favoriteItem.filter(item => {
             if(item.id === id){
                 item.favorite = !item.favorite

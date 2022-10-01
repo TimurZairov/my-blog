@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {
     FlatList,
@@ -18,6 +18,9 @@ import {loadPost} from "../store/reducers/actions/post";
 
 
 export const MainScreen = ({navigation}) => {
+
+    const [allPosts, setAllPosts] = useState([])
+
     const goToPosts = (post) => {
         navigation.navigate('Посты', {
             postId: post.id,
@@ -34,7 +37,12 @@ export const MainScreen = ({navigation}) => {
         dispatch(loadPost())
     }, [dispatch])
     //после дипспачт вызвать useSelector что бы обратиться к стэйту
-    const allPosts = useSelector(state => state.post.allPosts)
+    const posts = useSelector(state => state.post.allPosts)
+
+    useEffect(() => {
+        setAllPosts(posts)
+    }, [posts, useSelector])
+
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
