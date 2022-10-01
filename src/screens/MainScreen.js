@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import {
     FlatList,
     Platform,
@@ -11,14 +12,14 @@ import {
 import {FavoriteSlider} from "../components/FavoriteSlider";
 import {Posts} from "../components/Posts";
 //Data
-import {DATA} from "../../Data";
 import {Nav} from "../components/Nav";
 import {BgComponent} from "../components/BgComponent";
+import {loadPost} from "../store/reducers/actions/post";
 
 
 export const MainScreen = ({navigation}) => {
     const goToPosts = (post) => {
-        navigation.navigate('Посты',{
+        navigation.navigate('Посты', {
             postId: post.id,
             body: post.body,
             title: post.title,
@@ -26,16 +27,24 @@ export const MainScreen = ({navigation}) => {
             url: post.url
         })
     }
+    //вызывать внутри функционального компонента
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(loadPost())
+    }, [dispatch])
+    //после дипспачт вызвать useSelector что бы обратиться к стэйту
+    const allPosts = useSelector(state => state.post.allPosts)
 
     return (
         <View style={styles.AndroidSaveArea}>
-            <BgComponent />
-            <Nav />
+            <BgComponent/>
+            <Nav/>
             <FlatList
-                data={DATA}
+                data={allPosts}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={<FavoriteSlider/>}
-                renderItem={({item}) =><Posts post={item} goToPosts={goToPosts}/>}
+                renderItem={({item}) => <Posts post={item} goToPosts={goToPosts}/>}
             />
         </View>
 

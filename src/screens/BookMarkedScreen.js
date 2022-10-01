@@ -1,15 +1,18 @@
 import React from "react";
 import { View, StyleSheet, Platform, StatusBar, FlatList} from "react-native";
+import {useSelector} from "react-redux";
 import {Nav} from "../components/Nav";
 import {BgComponent} from "../components/BgComponent";
-import {DATA} from "../../Data";
 import {FavoriteCard} from "../components/FavoriteCard";
 
 
 export const BookMarkedScreen = () => {
-    const favoriteItem = DATA.filter(item => {
-        return item.favorite
-    })
+    //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
+    const favoriteItem = useSelector(state => state.post.bookedPosts)
+
+    // const favoriteItem = DATA.filter(item => {
+    //     return item.favorite
+    // })
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
