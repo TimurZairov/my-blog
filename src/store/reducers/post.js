@@ -1,4 +1,4 @@
-import {LOAD_POSTS} from "../types";
+import {FAVORITE_POSTS, LOAD_POSTS} from "../types";
 
 const initialState = {
     allPosts: [],
@@ -13,6 +13,8 @@ export const postReducer = (state = initialState, action ) => {
         case LOAD_POSTS: return {...state, allPosts: action.payload, bookedPosts: action.payload.filter( post => {
             return post.favorite
             })}
+        case FAVORITE_POSTS: return {...state, bookedPosts: state.bookedPosts.filter(item => item.id !== action.payload)}
+
         default: return state
     }
 

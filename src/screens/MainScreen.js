@@ -35,7 +35,6 @@ export const MainScreen = ({navigation}) => {
     }, [dispatch])
     //после дипспачт вызвать useSelector что бы обратиться к стэйту
     const allPosts = useSelector(state => state.post.allPosts)
-
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>

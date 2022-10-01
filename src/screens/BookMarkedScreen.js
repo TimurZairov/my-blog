@@ -1,23 +1,39 @@
-import React from "react";
-import { View, StyleSheet, Platform, StatusBar, FlatList} from "react-native";
-import {useSelector} from "react-redux";
+import React, {useCallback, useEffect, useState} from "react";
+import {View, StyleSheet, Platform, StatusBar, FlatList, LogBox} from "react-native";
+import {useDispatch, useSelector} from "react-redux";
 import {Nav} from "../components/Nav";
 import {BgComponent} from "../components/BgComponent";
 import {FavoriteCard} from "../components/FavoriteCard";
+import {favoritePosts} from "../store/reducers/actions/post";
 
 
 export const BookMarkedScreen = () => {
-    //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
-    const favoriteItem = useSelector(state => state.post.bookedPosts)
+    const items = useSelector(state => state.post.bookedPosts)
+    const [favoriteItem, setFavoriteItem] = useState([])
+    const dispatch = useDispatch()
 
-    // const favoriteItem = DATA.filter(item => {
-    //     return item.favorite
-    // })
+    //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
+    const toggleHandler = (id) => {
+        console.log(id)
+        const favorite = favoriteItem.filter(item => {
+            if(item.id === id){
+                item.favorite = !item.favorite
+                return item
+            }
+        })
+        dispatch(favoritePosts(favorite[0].id))
+    }
+
+
+    useEffect(() => {
+        setFavoriteItem(items)
+    }, [items, dispatch])
+
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
             <Nav/>
-            <FlatList keyExtractor={item => item.id} data={favoriteItem} renderItem={({item}) => <FavoriteCard data={item}/>} />
+            <FlatList keyExtractor={item => item.id} data={favoriteItem} renderItem={({item}) => <FavoriteCard data={item} toggleHandle={toggleHandler}/>}/>
         </View>
     )
 }
