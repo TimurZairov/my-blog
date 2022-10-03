@@ -1,9 +1,11 @@
-import React from "react";
-import { Platform, Text, View, StyleSheet, StatusBar, Image, ScrollView} from "react-native";
+import React, {useEffect, useState} from "react";
+import {Platform, Text, View, StyleSheet, StatusBar, Image, ScrollView, TouchableOpacity} from "react-native";
 import {Nav} from "../components/Nav";
 import {THEME} from "../theme";
 import {BgComponent} from "../components/BgComponent";
 import {Fontisto} from '@expo/vector-icons';
+import {useDispatch, useSelector} from "react-redux";
+import {addToFavorite} from "../store/reducers/actions/post";
 
 export const PostScreen = ({navigation, route}) => {
     const {
@@ -13,13 +15,30 @@ export const PostScreen = ({navigation, route}) => {
         favorite,
         url,
     } = route.params
+    const [color, setColor] = useState('white')
+
+    console.log(favorite)
     const goBackHandler = () => {
         navigation.navigate('Домой')
     }
+
+    const dispatch = useDispatch()
+    //add to favorite
+
+
+    const addFavorite = (id) => {
+        dispatch(addToFavorite(id))
+    }
+
+    useEffect(() => {
+
+    }, [route.params.favorite, navigation, addFavorite])
+
+
     return (
         <View style={styles.AndroidSaveArea}>
-            <BgComponent />
-            <Nav screenLocation={route.name} goBackHandler={goBackHandler} />
+            <BgComponent/>
+            <Nav screenLocation={route.name} goBackHandler={goBackHandler}/>
             <View style={styles.imageWrap}>
                 <Image source={{
                     uri: url
@@ -27,9 +46,9 @@ export const PostScreen = ({navigation, route}) => {
                     width: '100%',
                     height: 370
                 }}/>
-                <View style={styles.favIcon}>
-                    <Fontisto name='favorite' size={32} color={favorite ? 'red' : 'white'}/>
-                </View>
+                <TouchableOpacity style={styles.favIcon} activeOpacity={0.6} onPress={() => addFavorite(postId)}>
+                    <Fontisto name='favorite' size={32} color={favorite ? 'red' : "white"}/>
+                </TouchableOpacity>
                 <Text style={styles.bodyTitle}>{title}</Text>
             </View>
             <ScrollView style={styles.bodyWrapper}>

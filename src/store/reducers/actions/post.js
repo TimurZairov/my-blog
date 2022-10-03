@@ -1,5 +1,5 @@
 import {DATA} from "../../../../Data";
-import {ADD_POST, FAVORITE_POSTS, LOAD_POSTS} from "../../types";
+import {ADD_POST, ADD_TO_FAVORITE, FAVORITE_POSTS, LOAD_POSTS} from "../../types";
 
 export const loadPost = () => {
     return {
@@ -19,5 +19,12 @@ export const addPost = (post) => {
     return {
         type: ADD_POST,
         payload: post
+    }
+}
+// обязательно делаем return иначе не работает не приходит id
+export const addToFavorite = (id) => {
+    return{
+        type: ADD_TO_FAVORITE,
+        payload: id
     }
 }

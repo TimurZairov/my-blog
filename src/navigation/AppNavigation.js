@@ -1,9 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {PostScreen} from "../screens/PostScreen";
+import React from "react";
 //components
 import {MainScreen} from "../screens/MainScreen";
-import {PostScreen} from "../screens/PostScreen";
-import {BookMarkedScreen} from "../screens/BookMarkedScreen";
-import React from "react";
+
 
 const Stack = createNativeStackNavigator()
 
@@ -27,6 +27,5 @@ export const AppNavigation = () => {
                     />
             </Stack.Navigator>
         </>
-
     )
 }

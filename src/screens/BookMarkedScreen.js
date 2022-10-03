@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {View, StyleSheet, Platform, StatusBar, FlatList, LogBox} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 import {Nav} from "../components/Nav";
@@ -8,21 +8,20 @@ import {favoritePosts} from "../store/reducers/actions/post";
 
 
 export const BookMarkedScreen = () => {
+    //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
     const items = useSelector(state => state.post.bookedPosts)
     const [favoriteItem, setFavoriteItem] = useState([])
     const dispatch = useDispatch()
 
-    //мы сделали уже фильтр в reducers/post и через селектор обращаемся к ним
     const toggleHandler = (id) => {
         const favorite = favoriteItem.filter(item => {
             if(item.id === id){
-                item.favorite = !item.favorite
+                item.favorite = false
                 return item
             }
         })
         dispatch(favoritePosts(favorite[0].id))
     }
-
 
     useEffect(() => {
         setFavoriteItem(items)

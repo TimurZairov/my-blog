@@ -41,7 +41,7 @@ export const MainScreen = ({navigation}) => {
 
     useEffect(() => {
         setAllPosts(posts)
-    }, [posts, useSelector])
+    }, [posts, useSelector, dispatch, goToPosts])
 
     return (
         <View style={styles.AndroidSaveArea}>

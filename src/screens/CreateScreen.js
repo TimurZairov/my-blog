@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {
-    Image,
+    Alert,
     Platform,
     ScrollView,
     StatusBar,
@@ -14,26 +14,33 @@ import {Nav} from "../components/Nav";
 import {THEME} from "../theme";
 import {useDispatch} from "react-redux";
 import {addPost} from "../store/reducers/actions/post";
+import {PickImage} from "../components/PickImage";
 
 
 export const CreateScreen = ({navigation, route}) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [img, setImg] = useState(null)
     const dispatch = useDispatch()
 
-    const img = 'https://7706.ru/wp-content/uploads/2018/02/italy-1024x665.jpeg'
 
     const postHandler = () => {
-        const post = {
-            id: new Date().toJSON(),
-            url: img,
-            title,
-            body: description,
-            favorite: false
+        if(title.trim() === '' || description.trim() === '' || img === null){
+            Alert.alert('Заполните все плоля')
+        }else {
+            const post = {
+                id: new Date().toJSON(),
+                url: img,
+                title,
+                body: description,
+                favorite: false
+            }
+            dispatch(addPost(post))
+            setTitle('')
+            setDescription('')
+            navigation.navigate('Домой')
         }
-        dispatch(addPost(post))
-        // navigation.navigate('Домой')
     }
 
     return (
@@ -50,10 +57,8 @@ export const CreateScreen = ({navigation, route}) => {
                         <TextInput style={[styles.createText, styles.createTextDesc]}
                                    placeholder={'Вветите описание поста поста'} multiline={true} value={description}
                                    onChangeText={setDescription}/>
-                        <Image source={{
-                            uri: img
-                        }} style={{width: '100%', height: 200, marginTop: 15}}/>
-                        <TouchableOpacity style={styles.createBtn} onPress={postHandler}>
+                        <PickImage setImg={setImg} img={img} />
+                        <TouchableOpacity style={styles.createBtn} onPress={postHandler} activeOpacity={0.7}>
                             <Text style={{color: THEME.BACK_BTN_COLOR}}>Создать пост</Text>
                         </TouchableOpacity>
                     </View>
