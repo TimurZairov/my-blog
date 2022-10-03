@@ -1,10 +1,10 @@
-import {DATA} from "../../../../Data";
+// import {DATA} from "../../../../Data";
 import {ADD_POST, ADD_TO_FAVORITE, FAVORITE_POSTS, LOAD_POSTS} from "../../types";
 
 export const loadPost = () => {
     return {
         type: LOAD_POSTS,
-        payload: DATA
+        payload: []
     }
 }
 

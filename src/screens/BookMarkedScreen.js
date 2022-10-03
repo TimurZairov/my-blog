@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {View, StyleSheet, Platform, StatusBar, FlatList, LogBox} from "react-native";
+import React, {useEffect, useState} from "react";
+import {View, StyleSheet, Platform, StatusBar, FlatList, LogBox, Text} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 import {Nav} from "../components/Nav";
 import {BgComponent} from "../components/BgComponent";
@@ -15,7 +15,7 @@ export const BookMarkedScreen = () => {
 
     const toggleHandler = (id) => {
         const favorite = favoriteItem.filter(item => {
-            if(item.id === id){
+            if (item.id === id) {
                 item.favorite = false
                 return item
             }
@@ -31,7 +31,11 @@ export const BookMarkedScreen = () => {
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
             <Nav/>
-            <FlatList keyExtractor={item => item.id} data={favoriteItem} renderItem={({item}) => <FavoriteCard data={item} toggleHandle={toggleHandler}/>}/>
+            {favoriteItem.length > 0 ? <FlatList keyExtractor={item => item.id} data={favoriteItem}
+                                                 renderItem={({item}) => <FavoriteCard data={item}
+                                                                                       toggleHandle={toggleHandler}/>}/> :
+                <Text style={{textAlign: 'center', marginTop: 100, fontFamily: 'rubik-light'}}>Вы ничего не выбрали</Text>}
+
         </View>
     )
 }

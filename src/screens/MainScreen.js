@@ -4,7 +4,7 @@ import {
     FlatList,
     Platform,
     StatusBar,
-    StyleSheet,
+    StyleSheet, Text,
     View
 } from "react-native";
 
@@ -23,6 +23,7 @@ export const MainScreen = ({navigation}) => {
 
     const goToPosts = (post) => {
         navigation.navigate('Посты', {
+            //так передаем данные в постов на другую страницу при переходе
             postId: post.id,
             body: post.body,
             title: post.title,
@@ -30,6 +31,8 @@ export const MainScreen = ({navigation}) => {
             url: post.url
         })
     }
+
+    //Елси постов нет
     //вызывать внутри функционального компонента
     const dispatch = useDispatch()
 
@@ -41,18 +44,18 @@ export const MainScreen = ({navigation}) => {
 
     useEffect(() => {
         setAllPosts(posts)
-    }, [posts, useSelector, dispatch, goToPosts])
+    }, [posts])
 
     return (
         <View style={styles.AndroidSaveArea}>
             <BgComponent/>
             <Nav/>
-            <FlatList
+            {allPosts.length > 0 ? <FlatList
                 data={allPosts}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={<FavoriteSlider/>}
                 renderItem={({item}) => <Posts post={item} goToPosts={goToPosts}/>}
-            />
+            /> : <Text style={{textAlign: 'center', marginTop: 100, fontFamily: 'rubik-light'}}>Тут пока нет постов</Text>}
         </View>
 
     )
