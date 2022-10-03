@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {
     FlatList,
@@ -11,7 +11,6 @@ import {
 // components
 import {FavoriteSlider} from "../components/FavoriteSlider";
 import {Posts} from "../components/Posts";
-//Data
 import {Nav} from "../components/Nav";
 import {BgComponent} from "../components/BgComponent";
 import {loadPost} from "../store/reducers/actions/post";
@@ -36,15 +35,17 @@ export const MainScreen = ({navigation}) => {
     //вызывать внутри функционального компонента
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(loadPost())
-    }, [dispatch])
+
     //после дипспачт вызвать useSelector что бы обратиться к стэйту
     const posts = useSelector(state => state.post.allPosts)
 
     useEffect(() => {
         setAllPosts(posts)
     }, [posts])
+
+    useCallback(() => {
+        dispatch(loadPost())
+    }, [dispatch])
 
     return (
         <View style={styles.AndroidSaveArea}>

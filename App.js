@@ -7,6 +7,7 @@ import store from "./src/store";
 
 //components
 import {BottomTabNavigation} from "./src/navigation/BottomTabNavigation";
+import {DB} from "./src/db";
 
 
 export default function App() {
@@ -16,11 +17,17 @@ export default function App() {
     });
 
     useEffect(() => {
-        async function prepare() {
-            await SplashScreen.preventAutoHideAsync();
-        }
+        try {
+            async function prepare() {
+                await SplashScreen.preventAutoHideAsync();
+                await DB.init()
+            }
 
-        prepare();
+            prepare();
+            console.log('DB started')
+        }catch (e){
+            console.log(e)
+        }
     }, []);
 
     const onLayoutRootView = useCallback(async () => {
