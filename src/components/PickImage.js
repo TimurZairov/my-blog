@@ -1,12 +1,12 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {View, StyleSheet, Image, TouchableOpacity} from 'react-native'
+import React, {useState} from "react";
+import {View, Image, TouchableOpacity} from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import {THEME} from "../theme";
 import {AntDesign} from '@expo/vector-icons';
 
-export const PickImage = ({setImg, img}) => {
+export const PickImage = ({setImg, image, setImage}) => {
 
-    const [image, setImage] = useState(null)
+    // const [image, setImage] = useState(null)
     const pickImage = async () => {
         let res = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -16,8 +16,6 @@ export const PickImage = ({setImg, img}) => {
         })
         if (!res.cancelled) {
             setImage(res)
-            setImg(res.uri)
-            setImage(null)
         }else {
             return
         }

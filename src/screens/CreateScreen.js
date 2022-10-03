@@ -21,17 +21,17 @@ export const CreateScreen = ({navigation, route}) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [img, setImg] = useState(null)
+    const [image, setImage] = useState(null)
     const dispatch = useDispatch()
 
 
     const postHandler = () => {
-        if(title.trim() === '' || description.trim() === '' || img === null){
+        if(title.trim() === '' || description.trim() === '' || image === null){
             Alert.alert('Заполните все плоля')
         }else {
             const post = {
                 id: new Date().toJSON(),
-                url: img,
+                url: image.uri,
                 title,
                 body: description,
                 favorite: false
@@ -40,6 +40,7 @@ export const CreateScreen = ({navigation, route}) => {
             setTitle('')
             setDescription('')
             navigation.navigate('Домой')
+            setImage(null)
         }
     }
 
@@ -57,7 +58,7 @@ export const CreateScreen = ({navigation, route}) => {
                         <TextInput style={[styles.createText, styles.createTextDesc]}
                                    placeholder={'Вветите описание поста поста'} multiline={true} value={description}
                                    onChangeText={setDescription}/>
-                        <PickImage setImg={setImg} img={img} />
+                        <PickImage image={image} setImage={setImage}/>
                         <TouchableOpacity style={styles.createBtn} onPress={postHandler} activeOpacity={0.7}>
                             <Text style={{color: THEME.BACK_BTN_COLOR}}>Создать пост</Text>
                         </TouchableOpacity>
