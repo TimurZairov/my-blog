@@ -1,11 +1,12 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {
     FlatList,
     Platform,
     StatusBar,
     StyleSheet, Text,
-    View
+    View,
+    ActivityIndicator
 } from "react-native";
 
 // components
@@ -35,17 +36,24 @@ export const MainScreen = ({navigation}) => {
     //вызывать внутри функционального компонента
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(loadPost())
+    }, [dispatch])
+
 
     //после дипспачт вызвать useSelector что бы обратиться к стэйту
     const posts = useSelector(state => state.post.allPosts)
+    const loading = useSelector(state => state.post.loading)
 
     useEffect(() => {
         setAllPosts(posts)
     }, [posts])
-
-    useCallback(() => {
-        dispatch(loadPost())
-    }, [dispatch])
+    // так делаем пока загружается приложение
+    if(loading){
+        return (
+            <ActivityIndicator/>
+        )
+    }
 
     return (
         <View style={styles.AndroidSaveArea}>
@@ -67,5 +75,5 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
         position: "relative"
-    },
+    }
 });

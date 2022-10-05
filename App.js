@@ -20,11 +20,10 @@ export default function App() {
         try {
             async function prepare() {
                 await SplashScreen.preventAutoHideAsync();
-                await DB.init()
+                // await DB.init()
             }
 
             prepare();
-            console.log('DB started')
         }catch (e){
             console.log(e)
         }

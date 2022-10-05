@@ -30,9 +30,8 @@ export const CreateScreen = ({navigation, route}) => {
             Alert.alert('Заполните все плоля')
         }else {
             const post = {
-                id: new Date().toJSON(),
-                url: image.uri,
                 title,
+                url: image.uri,
                 body: description,
                 favorite: false
             }

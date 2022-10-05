@@ -1,8 +1,11 @@
 {
   "expo": {
     "name": "myblog",
-    "slug": "myblog",
+    "slug": "myblog-react-native",
+    "privacy": "public",
     "version": "1.0.0",
+    "platforms": ["android"],
+    "githubUrl": "https://github.com/TimurZairov/my-blog",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
